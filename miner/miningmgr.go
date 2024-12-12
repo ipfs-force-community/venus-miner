@@ -226,7 +226,7 @@ func (m *Miner) CountWinners(ctx context.Context, addrs []address.Address, start
 								winInfo = append(winInfo, types.SimpleWinInfo{Epoch: epoch + 1, Msg: err.Error()})
 								winInfoLk.Unlock()
 							}
-							log.Errorf("generate winner met failed address: %s, epoch: %d, err: %v", tAddr, epoch, err)
+							log.Warnf("generate winner met failed: address: %s, epoch: %d, err: %v", tAddr, epoch, err)
 							return
 						}
 

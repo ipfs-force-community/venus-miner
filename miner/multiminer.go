@@ -737,6 +737,7 @@ func (m *Miner) mineOneForAll(ctx context.Context, base *MiningBase) []*winPoStR
 						}
 						tMining.err = append(tMining.err, time.Now().Format("2006-01-02 15:04:05 ")+res.err.Error())
 						rcd.Record(ctx, recorder.Records{"error": res.err.Error()})
+						log.Errorf("failed to mined block, miner %s, height: %d, error %v", tAddr.String(), height, res.err)
 					} else if res.winner != nil {
 						winPoStLk.Lock()
 						winPoSts = append(winPoSts, res) //nolint:staticcheck
